@@ -49,7 +49,7 @@ When running `accelerate config`, if we specify torch compile mode to True there
 #### Example with LAION-A6+ dataset
 
 ```bash
-runwayml/stable-diffusion-v1-5
+Lykon/dreamshaper-8
 PROGRAM="train_lcm_distill_sd_wds.py \
     --pretrained_teacher_model=$MODEL_DIR \
     --output_dir=$OUTPUT_DIR \
@@ -79,7 +79,7 @@ Instead of fine-tuning the full model, we can also just train a LoRA that can be
 ### Example with LAION-A6+ dataset
     
 ```bash
-runwayml/stable-diffusion-v1-5
+Lykon/dreamshaper-8
 PROGRAM="train_lcm_distill_lora_sd_wds.py \
     --pretrained_teacher_model=$MODEL_DIR \
     --output_dir=$OUTPUT_DIR \

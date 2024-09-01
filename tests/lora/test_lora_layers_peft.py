@@ -1165,7 +1165,7 @@ class StableDiffusionLoRATests(PeftLoraLoaderMixinTests, unittest.TestCase):
     @slow
     @require_torch_gpu
     def test_integration_move_lora_cpu(self):
-        path = "runwayml/stable-diffusion-v1-5"
+        path = "Lykon/dreamshaper-8"
         lora_id = "takuma104/lora-test-text-encoder-lora-target"
 
         pipe = StableDiffusionPipeline.from_pretrained(path, torch_dtype=torch.float16)
@@ -1222,7 +1222,7 @@ class StableDiffusionLoRATests(PeftLoraLoaderMixinTests, unittest.TestCase):
     @slow
     @require_torch_gpu
     def test_integration_logits_with_scale(self):
-        path = "runwayml/stable-diffusion-v1-5"
+        path = "Lykon/dreamshaper-8"
         lora_id = "takuma104/lora-test-text-encoder-lora-target"
 
         pipe = StableDiffusionPipeline.from_pretrained(path, torch_dtype=torch.float32)
@@ -1253,7 +1253,7 @@ class StableDiffusionLoRATests(PeftLoraLoaderMixinTests, unittest.TestCase):
     @slow
     @require_torch_gpu
     def test_integration_logits_no_scale(self):
-        path = "runwayml/stable-diffusion-v1-5"
+        path = "Lykon/dreamshaper-8"
         lora_id = "takuma104/lora-test-text-encoder-lora-target"
 
         pipe = StableDiffusionPipeline.from_pretrained(path, torch_dtype=torch.float32)
@@ -1525,7 +1525,7 @@ class LoraIntegrationTests(unittest.TestCase):
     def test_kohya_sd_v15_with_higher_dimensions(self):
         generator = torch.Generator().manual_seed(0)
 
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", safety_checker=None).to(
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", safety_checker=None).to(
             torch_device
         )
         lora_model_id = "hf-internal-testing/urushisato-lora"
@@ -1567,7 +1567,7 @@ class LoraIntegrationTests(unittest.TestCase):
         prompt = "masterpiece, best quality, mountain"
         num_inference_steps = 2
 
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", safety_checker=None).to(
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", safety_checker=None).to(
             torch_device
         )
         initial_images = pipe(
@@ -1604,7 +1604,7 @@ class LoraIntegrationTests(unittest.TestCase):
         prompt = "masterpiece, best quality, mountain"
         num_inference_steps = 2
 
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", safety_checker=None).to(
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", safety_checker=None).to(
             torch_device
         )
         initial_images = pipe(
@@ -1760,7 +1760,7 @@ class LoraSDXLIntegrationTests(unittest.TestCase):
         release_memory(pipe)
 
     def test_sdv1_5_lcm_lora(self):
-        pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+        pipe = DiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float16)
         pipe.to("cuda")
         pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
 
@@ -1787,7 +1787,7 @@ class LoraSDXLIntegrationTests(unittest.TestCase):
         release_memory(pipe)
 
     def test_sdv1_5_lcm_lora_img2img(self):
-        pipe = AutoPipelineForImage2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+        pipe = AutoPipelineForImage2Image.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float16)
         pipe.to("cuda")
         pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
 
@@ -2026,7 +2026,7 @@ class LoraSDXLIntegrationTests(unittest.TestCase):
         This test simply checks that loading a LoRA with an empty network alpha works fine
         See: https://github.com/huggingface/diffusers/issues/5606
         """
-        pipeline = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5").to("cuda")
+        pipeline = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8").to("cuda")
         pipeline.enable_sequential_cpu_offload()
         civitai_path = hf_hub_download("ybelkada/test-ahi-civitai", "ahi_lora_weights.safetensors")
         pipeline.load_lora_weights(civitai_path, adapter_name="ahri")

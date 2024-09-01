@@ -27,7 +27,7 @@ This way, we don't have to train the full model and keep the number of trainable
 Additionally, the LoRAs can be applied to image-to-image, ControlNet/T2I-Adapter, inpainting, AnimateDiff etc. 
 The LCM-LoRA can also be combined with other LoRAs to generate styled images in very few steps (4-8).
 
-LCM-LoRAs are available for [stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5), [stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0), and the [SSD-1B](https://huggingface.co/segmind/SSD-1B) model. All the checkpoints can be found in this [collection](https://huggingface.co/collections/latent-consistency/latent-consistency-models-loras-654cdd24e111e16f0865fba6).
+LCM-LoRAs are available for [stable-diffusion-v1-5](https://huggingface.co/Lykon/dreamshaper-8), [stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0), and the [SSD-1B](https://huggingface.co/segmind/SSD-1B) model. All the checkpoints can be found in this [collection](https://huggingface.co/collections/latent-consistency/latent-consistency-models-loras-654cdd24e111e16f0865fba6).
 
 For more details about LCM-LoRA, refer to [the technical report](https://huggingface.co/papers/2311.05556).
 
@@ -241,7 +241,7 @@ canny_image = Image.fromarray(image)
 
 controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-canny", torch_dtype=torch.float16)
 pipe = StableDiffusionControlNetPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5",
+    "Lykon/dreamshaper-8",
     controlnet=controlnet,
     torch_dtype=torch.float16,
     safety_checker=None,
@@ -349,7 +349,7 @@ from diffusers import AutoPipelineForInpainting, LCMScheduler
 from diffusers.utils import load_image, make_image_grid
 
 pipe = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting",
+    "Lykon/dreamshaper-8-inpainting",
     torch_dtype=torch.float16,
     variant="fp16",
 ).to("cuda")

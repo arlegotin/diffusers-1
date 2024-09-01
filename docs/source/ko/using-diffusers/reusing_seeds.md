@@ -14,7 +14,7 @@ specific language governing permissions and limitations under the License.
 
 생성된 이미지의 품질을 개선하는 일반적인 방법은 *결정적 batch(배치) 생성*을 사용하는 것입니다. 이 방법은 이미지 batch(배치)를 생성하고 두 번째 추론 라운드에서 더 자세한 프롬프트와 함께 개선할 이미지 하나를 선택하는 것입니다. 핵심은 일괄 이미지 생성을 위해 파이프라인에 [`torch.Generator`](https://pytorch.org/docs/stable/generated/torch.Generator.html#generator) 목록을 전달하고, 각 `Generator`를 시드에 연결하여 이미지에 재사용할 수 있도록 하는 것입니다.
 
-예를 들어 [`runwayml/stable-diffusion-v1-5`](runwayml/stable-diffusion-v1-5)를 사용하여 다음 프롬프트의 여러 버전을 생성해 봅시다.
+예를 들어 [`Lykon/dreamshaper-8`](Lykon/dreamshaper-8)를 사용하여 다음 프롬프트의 여러 버전을 생성해 봅시다.
 
 ```py
 prompt = "Labrador in the style of Vermeer"
@@ -25,7 +25,7 @@ prompt = "Labrador in the style of Vermeer"
 ```python
 >>> from diffusers import DiffusionPipeline
 
->>> pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+>>> pipe = DiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float16)
 >>> pipe = pipe.to("cuda")
 ```
 

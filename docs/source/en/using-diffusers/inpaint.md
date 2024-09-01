@@ -85,7 +85,7 @@ Upload a base image to inpaint on and use the sketch tool to draw a mask. Once y
 
 ## Popular models
 
-[Stable Diffusion Inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting), [Stable Diffusion XL (SDXL) Inpainting](https://huggingface.co/diffusers/stable-diffusion-xl-1.0-inpainting-0.1), and [Kandinsky 2.2 Inpainting](https://huggingface.co/kandinsky-community/kandinsky-2-2-decoder-inpaint) are among the most popular models for inpainting. SDXL typically produces higher resolution images than Stable Diffusion v1.5, and Kandinsky 2.2 is also capable of generating high-quality images.
+[Stable Diffusion Inpainting](https://huggingface.co/Lykon/dreamshaper-8-inpainting), [Stable Diffusion XL (SDXL) Inpainting](https://huggingface.co/diffusers/stable-diffusion-xl-1.0-inpainting-0.1), and [Kandinsky 2.2 Inpainting](https://huggingface.co/kandinsky-community/kandinsky-2-2-decoder-inpaint) are among the most popular models for inpainting. SDXL typically produces higher resolution images than Stable Diffusion v1.5, and Kandinsky 2.2 is also capable of generating high-quality images.
 
 ### Stable Diffusion Inpainting
 
@@ -97,7 +97,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -186,12 +186,12 @@ make_image_grid([init_image, mask_image, image], rows=1, cols=3)
 
 ## Non-inpaint specific checkpoints
 
-So far, this guide has used inpaint specific checkpoints such as [runwayml/stable-diffusion-inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting). But you can also use regular checkpoints like [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5). Let's compare the results of the two checkpoints.
+So far, this guide has used inpaint specific checkpoints such as [Lykon/dreamshaper-8-inpainting](https://huggingface.co/Lykon/dreamshaper-8-inpainting). But you can also use regular checkpoints like [Lykon/dreamshaper-8](https://huggingface.co/Lykon/dreamshaper-8). Let's compare the results of the two checkpoints.
 
 The image on the left is generated from a regular checkpoint, and the image on the right is from an inpaint checkpoint. You'll immediately notice the image on the left is not as clean, and you can still see the outline of the area the model is supposed to inpaint. The image on the right is much cleaner and the inpainted area appears more natural.
 
 <hfoptions id="regular-specific">
-<hfoption id="runwayml/stable-diffusion-v1-5">
+<hfoption id="Lykon/dreamshaper-8">
 
 ```py
 import torch
@@ -199,7 +199,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, variant="fp16"
 ).to("cuda")
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -216,7 +216,7 @@ make_image_grid([init_image, image], rows=1, cols=2)
 ```
 
 </hfoption>
-<hfoption id="runwayml/stable-diffusion-inpainting">
+<hfoption id="Lykon/dreamshaper-8-inpainting">
 
 ```py
 import torch
@@ -224,7 +224,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 ).to("cuda")
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -246,18 +246,18 @@ make_image_grid([init_image, image], rows=1, cols=2)
 <div class="flex gap-4">
   <div>
     <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/non-inpaint-specific.png"/>
-    <figcaption class="mt-2 text-center text-sm text-gray-500">runwayml/stable-diffusion-v1-5</figcaption>
+    <figcaption class="mt-2 text-center text-sm text-gray-500">Lykon/dreamshaper-8</figcaption>
   </div>
   <div>
     <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/inpaint-specific.png"/>
-    <figcaption class="mt-2 text-center text-sm text-gray-500">runwayml/stable-diffusion-inpainting</figcaption>
+    <figcaption class="mt-2 text-center text-sm text-gray-500">Lykon/dreamshaper-8-inpainting</figcaption>
   </div>
 </div>
 
 However, for more basic tasks like erasing an object from an image (like the rocks in the road for example), a regular checkpoint yields pretty good results. There isn't as noticeable of difference between the regular and inpaint checkpoint.
 
 <hfoptions id="inpaint">
-<hfoption id="runwayml/stable-diffusion-v1-5">
+<hfoption id="Lykon/dreamshaper-8">
 
 ```py
 import torch
@@ -265,7 +265,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, variant="fp16"
 ).to("cuda")
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -288,7 +288,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 ).to("cuda")
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -308,11 +308,11 @@ make_image_grid([init_image, image], rows=1, cols=2)
 <div class="flex gap-4">
   <div>
     <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/regular-inpaint-basic.png"/>
-    <figcaption class="mt-2 text-center text-sm text-gray-500">runwayml/stable-diffusion-v1-5</figcaption>
+    <figcaption class="mt-2 text-center text-sm text-gray-500">Lykon/dreamshaper-8</figcaption>
   </div>
   <div>
     <img class="rounded-xl" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/diffusers/specific-inpaint-basic.png"/>
-    <figcaption class="mt-2 text-center text-sm text-gray-500">runwayml/stable-diffusion-inpainting</figcaption>
+    <figcaption class="mt-2 text-center text-sm text-gray-500">Lykon/dreamshaper-8-inpainting</figcaption>
   </div>
 </div>
 
@@ -330,7 +330,7 @@ from diffusers.utils import load_image, make_image_grid
 
 device = "cuda"
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting",
+    "Lykon/dreamshaper-8-inpainting",
     torch_dtype=torch.float16,
 )
 pipeline = pipeline.to(device)
@@ -378,7 +378,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -423,7 +423,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -463,7 +463,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -502,7 +502,7 @@ from diffusers import AutoPipelineForText2Image, AutoPipelineForInpainting
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForText2Image.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, variant="fp16", use_safetensors=True
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, variant="fp16", use_safetensors=True
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -555,7 +555,7 @@ from diffusers import AutoPipelineForInpainting, AutoPipelineForImage2Image
 from diffusers.utils import load_image, make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16, variant="fp16"
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -635,7 +635,7 @@ from diffusers import AutoPipelineForInpainting
 from diffusers.utils import make_image_grid
 
 pipeline = AutoPipelineForInpainting.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", torch_dtype=torch.float16,
+    "Lykon/dreamshaper-8-inpainting", torch_dtype=torch.float16,
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed
@@ -666,7 +666,7 @@ controlnet = ControlNetModel.from_pretrained("lllyasviel/control_v11p_sd15_inpai
 
 # pass ControlNet to the pipeline
 pipeline = StableDiffusionControlNetInpaintPipeline.from_pretrained(
-    "runwayml/stable-diffusion-inpainting", controlnet=controlnet, torch_dtype=torch.float16, variant="fp16"
+    "Lykon/dreamshaper-8-inpainting", controlnet=controlnet, torch_dtype=torch.float16, variant="fp16"
 )
 pipeline.enable_model_cpu_offload()
 # remove following line if xFormers is not installed or you have PyTorch 2.0 or higher installed

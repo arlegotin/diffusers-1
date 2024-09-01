@@ -2005,7 +2005,7 @@ class LoraIntegrationTests(unittest.TestCase):
     def test_kohya_sd_v15_with_higher_dimensions(self):
         generator = torch.Generator().manual_seed(0)
 
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", safety_checker=None).to(
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", safety_checker=None).to(
             torch_device
         )
         lora_model_id = "hf-internal-testing/urushisato-lora"
@@ -2045,7 +2045,7 @@ class LoraIntegrationTests(unittest.TestCase):
         prompt = "masterpiece, best quality, mountain"
         num_inference_steps = 2
 
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", safety_checker=None).to(
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", safety_checker=None).to(
             torch_device
         )
         initial_images = pipe(
@@ -2081,7 +2081,7 @@ class LoraIntegrationTests(unittest.TestCase):
         prompt = "masterpiece, best quality, mountain"
         num_inference_steps = 2
 
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", safety_checker=None).to(
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", safety_checker=None).to(
             torch_device
         )
         initial_images = pipe(

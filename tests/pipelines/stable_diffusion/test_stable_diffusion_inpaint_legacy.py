@@ -566,7 +566,7 @@ class StableDiffusionInpaintLegacyPipelineNightlyTests(unittest.TestCase):
         return inputs
 
     def test_inpaint_pndm(self):
-        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("runwayml/stable-diffusion-v1-5")
+        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("Lykon/dreamshaper-8")
         sd_pipe.to(torch_device)
         sd_pipe.set_progress_bar_config(disable=None)
 
@@ -581,7 +581,7 @@ class StableDiffusionInpaintLegacyPipelineNightlyTests(unittest.TestCase):
         assert max_diff < 1e-3
 
     def test_inpaint_ddim(self):
-        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("runwayml/stable-diffusion-v1-5")
+        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("Lykon/dreamshaper-8")
         sd_pipe.scheduler = DDIMScheduler.from_config(sd_pipe.scheduler.config)
         sd_pipe.to(torch_device)
         sd_pipe.set_progress_bar_config(disable=None)
@@ -597,7 +597,7 @@ class StableDiffusionInpaintLegacyPipelineNightlyTests(unittest.TestCase):
         assert max_diff < 1e-3
 
     def test_inpaint_lms(self):
-        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("runwayml/stable-diffusion-v1-5")
+        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("Lykon/dreamshaper-8")
         sd_pipe.scheduler = LMSDiscreteScheduler.from_config(sd_pipe.scheduler.config)
         sd_pipe.to(torch_device)
         sd_pipe.set_progress_bar_config(disable=None)
@@ -613,7 +613,7 @@ class StableDiffusionInpaintLegacyPipelineNightlyTests(unittest.TestCase):
         assert max_diff < 1e-3
 
     def test_inpaint_dpm(self):
-        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("runwayml/stable-diffusion-v1-5")
+        sd_pipe = StableDiffusionInpaintPipelineLegacy.from_pretrained("Lykon/dreamshaper-8")
         sd_pipe.scheduler = DPMSolverMultistepScheduler.from_config(sd_pipe.scheduler.config)
         sd_pipe.to(torch_device)
         sd_pipe.set_progress_bar_config(disable=None)

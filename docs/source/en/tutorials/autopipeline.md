@@ -12,7 +12,7 @@ specific language governing permissions and limitations under the License.
 
 # AutoPipeline
 
-🤗 Diffusers is able to complete many different tasks, and you can often reuse the same pretrained weights for multiple tasks such as text-to-image, image-to-image, and inpainting. If you're new to the library and diffusion models though, it may be difficult to know which pipeline to use for a task. For example, if you're using the [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) checkpoint for text-to-image, you might not know that you could also use it for image-to-image and inpainting by loading the checkpoint with the [`StableDiffusionImg2ImgPipeline`] and [`StableDiffusionInpaintPipeline`] classes respectively.
+🤗 Diffusers is able to complete many different tasks, and you can often reuse the same pretrained weights for multiple tasks such as text-to-image, image-to-image, and inpainting. If you're new to the library and diffusion models though, it may be difficult to know which pipeline to use for a task. For example, if you're using the [Lykon/dreamshaper-8](https://huggingface.co/Lykon/dreamshaper-8) checkpoint for text-to-image, you might not know that you could also use it for image-to-image and inpainting by loading the checkpoint with the [`StableDiffusionImg2ImgPipeline`] and [`StableDiffusionInpaintPipeline`] classes respectively.
 
 The `AutoPipeline` class is designed to simplify the variety of pipelines in 🤗 Diffusers. It is a generic, *task-first* pipeline that lets you focus on the task. The `AutoPipeline` automatically detects the correct pipeline class to use, which makes it easier to load a checkpoint for a task without knowing the specific pipeline class name.
 
@@ -26,14 +26,14 @@ This tutorial shows you how to use an `AutoPipeline` to automatically infer the 
 
 ## Choose an AutoPipeline for your task
 
-Start by picking a checkpoint. For example, if you're interested in text-to-image with the [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) checkpoint, use [`AutoPipelineForText2Image`]:
+Start by picking a checkpoint. For example, if you're interested in text-to-image with the [Lykon/dreamshaper-8](https://huggingface.co/Lykon/dreamshaper-8) checkpoint, use [`AutoPipelineForText2Image`]:
 
 ```py
 from diffusers import AutoPipelineForText2Image
 import torch
 
 pipeline = AutoPipelineForText2Image.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, use_safetensors=True
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, use_safetensors=True
 ).to("cuda")
 prompt = "peasant and dragon combat, wood cutting style, viking era, bevel with rune"
 
@@ -47,7 +47,7 @@ image
 
 Under the hood, [`AutoPipelineForText2Image`]:
 
-1. automatically detects a `"stable-diffusion"` class from the [`model_index.json`](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/model_index.json) file
+1. automatically detects a `"stable-diffusion"` class from the [`model_index.json`](https://huggingface.co/Lykon/dreamshaper-8/blob/main/model_index.json) file
 2. loads the corresponding text-to-image [`StableDiffusionPipeline`] based on the `"stable-diffusion"` class name
 
 Likewise, for image-to-image, [`AutoPipelineForImage2Image`] detects a `"stable-diffusion"` checkpoint from the `model_index.json` file and it'll load the corresponding [`StableDiffusionImg2ImgPipeline`] behind the scenes. You can also pass any additional arguments specific to the pipeline class such as `strength`, which determines the amount of noise or variation added to an input image:
@@ -60,7 +60,7 @@ from PIL import Image
 from io import BytesIO
 
 pipeline = AutoPipelineForImage2Image.from_pretrained(
-    "runwayml/stable-diffusion-v1-5",
+    "Lykon/dreamshaper-8",
     torch_dtype=torch.float16,
     use_safetensors=True,
 ).to("cuda")
@@ -129,7 +129,7 @@ from diffusers import AutoPipelineForText2Image, AutoPipelineForImage2Image
 import torch
 
 pipeline_text2img = AutoPipelineForText2Image.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, use_safetensors=True
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, use_safetensors=True
 )
 print(type(pipeline_text2img))
 "<class 'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion.StableDiffusionPipeline'>"
@@ -150,7 +150,7 @@ from diffusers import AutoPipelineForText2Image, AutoPipelineForImage2Image
 import torch
 
 pipeline_text2img = AutoPipelineForText2Image.from_pretrained(
-    "runwayml/stable-diffusion-v1-5",
+    "Lykon/dreamshaper-8",
     torch_dtype=torch.float16,
     use_safetensors=True,
     requires_safety_checker=False,

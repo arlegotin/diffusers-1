@@ -30,7 +30,7 @@ The following paragraphs show how to do so with the 🧨 Diffusers library.
 
 ## Load pipeline
 
-Let's start by loading the [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5) model in the [`DiffusionPipeline`]:
+Let's start by loading the [`Lykon/dreamshaper-8`](https://huggingface.co/Lykon/dreamshaper-8) model in the [`DiffusionPipeline`]:
 
 ```python
 from huggingface_hub import login
@@ -40,7 +40,7 @@ import torch
 login()
 
 pipeline = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, use_safetensors=True
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, use_safetensors=True
 )
 ```
 
@@ -291,7 +291,7 @@ from flax.training.common_utils import shard
 
 from diffusers import FlaxStableDiffusionPipeline, FlaxDPMSolverMultistepScheduler
 
-model_id = "runwayml/stable-diffusion-v1-5"
+model_id = "Lykon/dreamshaper-8"
 scheduler, scheduler_state = FlaxDPMSolverMultistepScheduler.from_pretrained(
     model_id,
     subfolder="scheduler"

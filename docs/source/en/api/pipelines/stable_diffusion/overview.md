@@ -60,7 +60,7 @@ The table below summarizes the available Stable Diffusion pipelines, their suppo
             <a href="./inpaint">StableDiffusionInpaint</a>
             </td>
             <td class="px-4 py-2 text-gray-700">inpainting</td>
-            <td class="px-4 py-2"><a href="https://huggingface.co/spaces/runwayml/stable-diffusion-inpainting"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue"/></a>
+            <td class="px-4 py-2"><a href="https://huggingface.co/spaces/Lykon/dreamshaper-8-inpainting"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue"/></a>
             </td>
         </tr>
         <tr>

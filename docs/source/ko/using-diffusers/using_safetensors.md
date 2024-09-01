@@ -8,14 +8,14 @@
 !pip install safetensors
 ```
 
-['runwayml/stable-diffusion-v1-5`] (https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main) 리포지토리를 보면 `text_encoder`, `unet` 및 `vae` 하위 폴더에 가중치가 `.safetensors` 형식으로 저장되어 있는 것을 볼 수 있습니다. 기본적으로 🤗 디퓨저는 모델 저장소에서 사용할 수 있는 경우 해당 하위 폴더에서 이러한 '.safetensors` 파일을 자동으로 로드합니다.
+['Lykon/dreamshaper-8`] (https://huggingface.co/Lykon/dreamshaper-8/tree/main) 리포지토리를 보면 `text_encoder`, `unet` 및 `vae` 하위 폴더에 가중치가 `.safetensors` 형식으로 저장되어 있는 것을 볼 수 있습니다. 기본적으로 🤗 디퓨저는 모델 저장소에서 사용할 수 있는 경우 해당 하위 폴더에서 이러한 '.safetensors` 파일을 자동으로 로드합니다.
 
 보다 명시적인 제어를 위해 선택적으로 `사용_세이프텐서=True`를 설정할 수 있습니다(`세이프텐서`가 설치되지 않은 경우 설치하라는 오류 메시지가 표시됨):
 
 ```py
 from diffusers import DiffusionPipeline
 
-pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", use_safetensors=True)
+pipeline = DiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", use_safetensors=True)
 ```
 
 그러나 모델 가중치가 위의 예시처럼 반드시 별도의 하위 폴더에 저장되는 것은 아닙니다. 모든 가중치가 하나의 '.safetensors` 파일에 저장되는 경우도 있습니다. 이 경우 가중치가 Stable Diffusion 가중치인 경우 [`~diffusers.loaders.FromCkptMixin.from_ckpt`] 메서드를 사용하여 파일을 직접 로드할 수 있습니다:

@@ -143,7 +143,7 @@ class FromSingleFileMixin:
 
         >>> # Enable float16 and move to GPU
         >>> pipeline = StableDiffusionPipeline.from_single_file(
-        ...     "https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned-emaonly.ckpt",
+        ...     "https://huggingface.co/Lykon/dreamshaper-8/blob/main/v1-5-pruned-emaonly.ckpt",
         ...     torch_dtype=torch.float16,
         ... )
         >>> pipeline.to("cuda")
@@ -547,7 +547,7 @@ class FromOriginalControlnetMixin:
         url = "https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11p_sd15_canny.pth"  # can also be a local path
         model = ControlNetModel.from_single_file(url)
 
-        url = "https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned.safetensors"  # can also be a local path
+        url = "https://huggingface.co/Lykon/dreamshaper-8/blob/main/v1-5-pruned.safetensors"  # can also be a local path
         pipe = StableDiffusionControlNetPipeline.from_single_file(url, controlnet=controlnet)
         ```
         """

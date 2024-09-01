@@ -999,7 +999,7 @@ class ConsistencyDecoderVAEIntegrationTests(unittest.TestCase):
 
     def test_sd(self):
         vae = ConsistencyDecoderVAE.from_pretrained("openai/consistency-decoder")  # TODO - update
-        pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", vae=vae, safety_checker=None)
+        pipe = StableDiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", vae=vae, safety_checker=None)
         pipe.to(torch_device)
 
         out = pipe(
@@ -1047,7 +1047,7 @@ class ConsistencyDecoderVAEIntegrationTests(unittest.TestCase):
             "openai/consistency-decoder", torch_dtype=torch.float16
         )  # TODO - update
         pipe = StableDiffusionPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5",
+            "Lykon/dreamshaper-8",
             torch_dtype=torch.float16,
             vae=vae,
             safety_checker=None,

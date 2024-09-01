@@ -61,7 +61,7 @@ Now we can launch the training using:
 **___Note: Change the `resolution` to 768 if you are using the [stable-diffusion-2](https://huggingface.co/stabilityai/stable-diffusion-2) 768x768 model.___**
 
 ```bash
-export MODEL_NAME="runwayml/stable-diffusion-v1-5"
+export MODEL_NAME="Lykon/dreamshaper-8"
 export DATA_DIR="./cat"
 
 accelerate launch textual_inversion.py \

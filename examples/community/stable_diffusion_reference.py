@@ -26,7 +26,7 @@ EXAMPLE_DOC_STRING = """
         >>> input_image = load_image("https://hf.co/datasets/huggingface/documentation-images/resolve/main/diffusers/input_image_vermeer.png")
 
         >>> pipe = StableDiffusionReferencePipeline.from_pretrained(
-                "runwayml/stable-diffusion-v1-5",
+                "Lykon/dreamshaper-8",
                 safety_checker=None,
                 torch_dtype=torch.float16
                 ).to('cuda:0')

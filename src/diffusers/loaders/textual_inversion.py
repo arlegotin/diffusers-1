@@ -341,7 +341,7 @@ class TextualInversionLoaderMixin:
         from diffusers import StableDiffusionPipeline
         import torch
 
-        model_id = "runwayml/stable-diffusion-v1-5"
+        model_id = "Lykon/dreamshaper-8"
         pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
 
         pipe.load_textual_inversion("sd-concepts-library/cat-toy")
@@ -360,7 +360,7 @@ class TextualInversionLoaderMixin:
         from diffusers import StableDiffusionPipeline
         import torch
 
-        model_id = "runwayml/stable-diffusion-v1-5"
+        model_id = "Lykon/dreamshaper-8"
         pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
 
         pipe.load_textual_inversion("./charturnerv2.pt", token="charturnerv2")

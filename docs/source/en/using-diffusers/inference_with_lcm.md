@@ -22,7 +22,7 @@ From the [official website](https://latent-consistency-models.github.io/):
 
 For a more technical overview of LCMs, refer to [the paper](https://huggingface.co/papers/2310.04378).
 
-LCM distilled models are available for [stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5), [stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0), and the [SSD-1B](https://huggingface.co/segmind/SSD-1B) model. All the checkpoints can be found in this [collection](https://huggingface.co/collections/latent-consistency/latent-consistency-models-weights-654ce61a95edd6dffccef6a8).
+LCM distilled models are available for [stable-diffusion-v1-5](https://huggingface.co/Lykon/dreamshaper-8), [stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0), and the [SSD-1B](https://huggingface.co/segmind/SSD-1B) model. All the checkpoints can be found in this [collection](https://huggingface.co/collections/latent-consistency/latent-consistency-models-weights-654ce61a95edd6dffccef6a8).
 
 This guide shows how to perform inference with LCMs for 
 - text-to-image

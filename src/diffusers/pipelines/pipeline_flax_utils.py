@@ -236,14 +236,14 @@ class FlaxDiffusionPipeline(ConfigMixin, PushToHubMixin):
         If you get the error message below, you need to finetune the weights for your downstream task:
 
         ```
-        Some weights of FlaxUNet2DConditionModel were not initialized from the model checkpoint at runwayml/stable-diffusion-v1-5 and are newly initialized because the shapes did not match:
+        Some weights of FlaxUNet2DConditionModel were not initialized from the model checkpoint at Lykon/dreamshaper-8 and are newly initialized because the shapes did not match:
         ```
 
         Parameters:
             pretrained_model_name_or_path (`str` or `os.PathLike`, *optional*):
                 Can be either:
 
-                    - A string, the *repo id* (for example `runwayml/stable-diffusion-v1-5`) of a pretrained pipeline
+                    - A string, the *repo id* (for example `Lykon/dreamshaper-8`) of a pretrained pipeline
                       hosted on the Hub.
                     - A path to a *directory* (for example `./my_model_directory`) containing the model weights saved
                       using [`~FlaxDiffusionPipeline.save_pretrained`].
@@ -294,7 +294,7 @@ class FlaxDiffusionPipeline(ConfigMixin, PushToHubMixin):
         >>> # Requires to be logged in to Hugging Face hub,
         >>> # see more in [the documentation](https://huggingface.co/docs/hub/security-tokens)
         >>> pipeline, params = FlaxDiffusionPipeline.from_pretrained(
-        ...     "runwayml/stable-diffusion-v1-5",
+        ...     "Lykon/dreamshaper-8",
         ...     revision="bf16",
         ...     dtype=jnp.bfloat16,
         ... )
@@ -302,7 +302,7 @@ class FlaxDiffusionPipeline(ConfigMixin, PushToHubMixin):
         >>> # Download pipeline, but use a different scheduler
         >>> from diffusers import FlaxDPMSolverMultistepScheduler
 
-        >>> model_id = "runwayml/stable-diffusion-v1-5"
+        >>> model_id = "Lykon/dreamshaper-8"
         >>> dpmpp, dpmpp_state = FlaxDPMSolverMultistepScheduler.from_pretrained(
         ...     model_id,
         ...     subfolder="scheduler",
@@ -563,7 +563,7 @@ class FlaxDiffusionPipeline(ConfigMixin, PushToHubMixin):
         ... )
 
         >>> text2img = FlaxStableDiffusionPipeline.from_pretrained(
-        ...     "runwayml/stable-diffusion-v1-5", revision="bf16", dtype=jnp.bfloat16
+        ...     "Lykon/dreamshaper-8", revision="bf16", dtype=jnp.bfloat16
         ... )
         >>> img2img = FlaxStableDiffusionImg2ImgPipeline(**text2img.components)
         ```

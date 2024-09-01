@@ -16,7 +16,7 @@ specific language governing permissions and limitations under the License.
 
 A common way to improve the quality of generated images is with *deterministic batch generation*, generate a batch of images and select one image to improve with a more detailed prompt in a second round of inference. The key is to pass a list of [`torch.Generator`](https://pytorch.org/docs/stable/generated/torch.Generator.html#generator)'s to the pipeline for batched image generation, and tie each `Generator` to a seed so you can reuse it for an image.
 
-Let's use [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5) for example, and generate several versions of the following prompt:
+Let's use [`Lykon/dreamshaper-8`](https://huggingface.co/Lykon/dreamshaper-8) for example, and generate several versions of the following prompt:
 
 ```py
 prompt = "Labrador in the style of Vermeer"
@@ -30,7 +30,7 @@ from diffusers import DiffusionPipeline
 from diffusers.utils import make_image_grid
 
 pipe = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, use_safetensors=True
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, use_safetensors=True
 )
 pipe = pipe.to("cuda")
 ```

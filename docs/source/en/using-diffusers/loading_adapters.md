@@ -54,7 +54,7 @@ Because textual inversion creates embeddings, it cannot be used on its own like 
 from diffusers import AutoPipelineForText2Image
 import torch
 
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to("cuda")
+pipeline = AutoPipelineForText2Image.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float16).to("cuda")
 ```
 
 Now you can load the textual inversion embeddings with the [`~loaders.TextualInversionLoaderMixin.load_textual_inversion`] method and generate some images. Let's load the [sd-concepts-library/gta5-artwork](https://huggingface.co/sd-concepts-library/gta5-artwork) embeddings and you'll need to include the special word `<gta5-artwork>` in your prompt to trigger it:
@@ -331,7 +331,7 @@ import torch
 from diffusers.utils import load_image
 
 
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to("cuda")
+pipeline = AutoPipelineForText2Image.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float16).to("cuda")
 ```
 
 Now load the [h94/IP-Adapter](https://huggingface.co/h94/IP-Adapter) weights with the [`~loaders.IPAdapterMixin.load_ip_adapter`] method. 
@@ -353,7 +353,7 @@ image_encoder = CLIPVisionModelWithProjection.from_pretrained(
     torch_dtype=torch.float16,
 ).to("cuda")
 
-pipeline = AutoPipelineForText2Image.from_pretrained("runwayml/stable-diffusion-v1-5", image_encoder=image_encoder, torch_dtype=torch.float16).to("cuda")
+pipeline = AutoPipelineForText2Image.from_pretrained("Lykon/dreamshaper-8", image_encoder=image_encoder, torch_dtype=torch.float16).to("cuda")
 ```
 </Tip>
 
@@ -393,7 +393,7 @@ from diffusers import AutoPipelineForImage2Image
 import torch
 from diffusers.utils import load_image
 
-pipeline = AutoPipelineForImage2Image.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16).to("cuda")
+pipeline = AutoPipelineForImage2Image.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float16).to("cuda")
 
 image = load_image("https://huggingface.co/datasets/YiYiXu/testing-images/resolve/main/vermeer.jpg")
 ip_image = load_image("https://huggingface.co/datasets/YiYiXu/testing-images/resolve/main/river.png")
@@ -419,7 +419,7 @@ from diffusers import AutoPipelineForInpaint
 import torch
 from diffusers.utils import load_image
 
-pipeline = AutoPipelineForInpaint.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float).to("cuda")
+pipeline = AutoPipelineForInpaint.from_pretrained("Lykon/dreamshaper-8", torch_dtype=torch.float).to("cuda")
 
 image = load_image("https://huggingface.co/datasets/YiYiXu/testing-images/resolve/main/inpaint_image.png")
 mask = load_image("https://huggingface.co/datasets/YiYiXu/testing-images/resolve/main/mask.png")
@@ -539,7 +539,7 @@ controlnet_model_path = "lllyasviel/control_v11f1p_sd15_depth"
 controlnet = ControlNetModel.from_pretrained(controlnet_model_path, torch_dtype=torch.float16)
 
 pipeline = StableDiffusionControlNetPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", controlnet=controlnet, torch_dtype=torch.float16)
+    "Lykon/dreamshaper-8", controlnet=controlnet, torch_dtype=torch.float16)
 pipeline.to("cuda")
 
 image = load_image("https://huggingface.co/datasets/YiYiXu/testing-images/resolve/main/statue.png")

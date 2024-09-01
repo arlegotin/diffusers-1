@@ -26,7 +26,7 @@ from diffusers import AutoPipelineForText2Image
 import torch
 
 pipeline = AutoPipelineForText2Image.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, use_safetensors=True
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, use_safetensors=True
 ).to("cuda")
 prompt = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
 

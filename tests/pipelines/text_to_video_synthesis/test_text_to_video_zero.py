@@ -27,7 +27,7 @@ from ..test_pipelines_common import assert_mean_pixel_difference
 @require_torch_gpu
 class TextToVideoZeroPipelineSlowTests(unittest.TestCase):
     def test_full_model(self):
-        model_id = "runwayml/stable-diffusion-v1-5"
+        model_id = "Lykon/dreamshaper-8"
         pipe = TextToVideoZeroPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
         pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
         generator = torch.Generator(device="cuda").manual_seed(0)

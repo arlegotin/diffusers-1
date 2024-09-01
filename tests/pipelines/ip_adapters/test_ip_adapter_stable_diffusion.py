@@ -107,7 +107,7 @@ class IPAdapterSDIntegrationTests(IPAdapterNightlyTestsMixin):
     def test_text_to_image(self):
         image_encoder = self.get_image_encoder(repo_id="h94/IP-Adapter", subfolder="models/image_encoder")
         pipeline = StableDiffusionPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5", image_encoder=image_encoder, safety_checker=None, torch_dtype=self.dtype
+            "Lykon/dreamshaper-8", image_encoder=image_encoder, safety_checker=None, torch_dtype=self.dtype
         )
         pipeline.to(torch_device)
         pipeline.load_ip_adapter("h94/IP-Adapter", subfolder="models", weight_name="ip-adapter_sd15.bin")
@@ -123,7 +123,7 @@ class IPAdapterSDIntegrationTests(IPAdapterNightlyTestsMixin):
     def test_image_to_image(self):
         image_encoder = self.get_image_encoder(repo_id="h94/IP-Adapter", subfolder="models/image_encoder")
         pipeline = StableDiffusionImg2ImgPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5", image_encoder=image_encoder, safety_checker=None, torch_dtype=self.dtype
+            "Lykon/dreamshaper-8", image_encoder=image_encoder, safety_checker=None, torch_dtype=self.dtype
         )
         pipeline.to(torch_device)
         pipeline.load_ip_adapter("h94/IP-Adapter", subfolder="models", weight_name="ip-adapter_sd15.bin")
@@ -139,7 +139,7 @@ class IPAdapterSDIntegrationTests(IPAdapterNightlyTestsMixin):
     def test_inpainting(self):
         image_encoder = self.get_image_encoder(repo_id="h94/IP-Adapter", subfolder="models/image_encoder")
         pipeline = StableDiffusionInpaintPipeline.from_pretrained(
-            "runwayml/stable-diffusion-v1-5", image_encoder=image_encoder, safety_checker=None, torch_dtype=self.dtype
+            "Lykon/dreamshaper-8", image_encoder=image_encoder, safety_checker=None, torch_dtype=self.dtype
         )
         pipeline.to(torch_device)
         pipeline.load_ip_adapter("h94/IP-Adapter", subfolder="models", weight_name="ip-adapter_sd15.bin")

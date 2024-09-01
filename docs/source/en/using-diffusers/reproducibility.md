@@ -173,7 +173,7 @@ Now when you run the same pipeline twice, you'll get identical results.
 import torch
 from diffusers import DDIMScheduler, StableDiffusionPipeline
 
-model_id = "runwayml/stable-diffusion-v1-5"
+model_id = "Lykon/dreamshaper-8"
 pipe = StableDiffusionPipeline.from_pretrained(model_id, use_safetensors=True).to("cuda")
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 g = torch.Generator(device="cuda")

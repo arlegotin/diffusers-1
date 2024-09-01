@@ -38,7 +38,7 @@ The [`DiffusionPipeline`] class is the simplest and most generic way to load the
 ```python
 from diffusers import DiffusionPipeline
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 pipe = DiffusionPipeline.from_pretrained(repo_id, use_safetensors=True)
 ```
 
@@ -47,26 +47,26 @@ You can also load a checkpoint with its specific pipeline class. The example abo
 ```python
 from diffusers import StableDiffusionPipeline
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 pipe = StableDiffusionPipeline.from_pretrained(repo_id, use_safetensors=True)
 ```
 
-A checkpoint (such as [`CompVis/stable-diffusion-v1-4`](https://huggingface.co/CompVis/stable-diffusion-v1-4) or [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5)) may also be used for more than one task, like text-to-image or image-to-image. To differentiate what task you want to use the checkpoint for, you have to load it directly with its corresponding task-specific pipeline class:
+A checkpoint (such as [`CompVis/stable-diffusion-v1-4`](https://huggingface.co/CompVis/stable-diffusion-v1-4) or [`Lykon/dreamshaper-8`](https://huggingface.co/Lykon/dreamshaper-8)) may also be used for more than one task, like text-to-image or image-to-image. To differentiate what task you want to use the checkpoint for, you have to load it directly with its corresponding task-specific pipeline class:
 
 ```python
 from diffusers import StableDiffusionImg2ImgPipeline
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 pipe = StableDiffusionImg2ImgPipeline.from_pretrained(repo_id)
 ```
 
 ### Local pipeline
 
-To load a diffusion pipeline locally, use [`git-lfs`](https://git-lfs.github.com/) to manually download the checkpoint (in this case, [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5)) to your local disk. This creates a local folder, `./stable-diffusion-v1-5`, on your disk:
+To load a diffusion pipeline locally, use [`git-lfs`](https://git-lfs.github.com/) to manually download the checkpoint (in this case, [`Lykon/dreamshaper-8`](https://huggingface.co/Lykon/dreamshaper-8)) to your local disk. This creates a local folder, `./stable-diffusion-v1-5`, on your disk:
 
 ```bash
 git-lfs install
-git clone https://huggingface.co/runwayml/stable-diffusion-v1-5
+git clone https://huggingface.co/Lykon/dreamshaper-8
 ```
 
 Then pass the local path to [`~DiffusionPipeline.from_pretrained`]:
@@ -93,19 +93,19 @@ To find out which schedulers are compatible for customization, you can use the `
 ```py
 from diffusers import DiffusionPipeline
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 stable_diffusion = DiffusionPipeline.from_pretrained(repo_id, use_safetensors=True)
 stable_diffusion.scheduler.compatibles
 ```
 
-Let's use the [`SchedulerMixin.from_pretrained`] method to replace the default [`PNDMScheduler`] with a more performant scheduler, [`EulerDiscreteScheduler`]. The `subfolder="scheduler"` argument is required to load the scheduler configuration from the correct [subfolder](https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main/scheduler) of the pipeline repository.
+Let's use the [`SchedulerMixin.from_pretrained`] method to replace the default [`PNDMScheduler`] with a more performant scheduler, [`EulerDiscreteScheduler`]. The `subfolder="scheduler"` argument is required to load the scheduler configuration from the correct [subfolder](https://huggingface.co/Lykon/dreamshaper-8/tree/main/scheduler) of the pipeline repository.
 
 Then you can pass the new [`EulerDiscreteScheduler`] instance to the `scheduler` argument in [`DiffusionPipeline`]:
 
 ```python
 from diffusers import DiffusionPipeline, EulerDiscreteScheduler
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 scheduler = EulerDiscreteScheduler.from_pretrained(repo_id, subfolder="scheduler")
 stable_diffusion = DiffusionPipeline.from_pretrained(repo_id, scheduler=scheduler, use_safetensors=True)
 ```
@@ -117,7 +117,7 @@ Diffusion models like Stable Diffusion can generate harmful content, which is wh
 ```python
 from diffusers import DiffusionPipeline
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 stable_diffusion = DiffusionPipeline.from_pretrained(repo_id, safety_checker=None, use_safetensors=True)
 """
 You have disabled the safety checker for <class 'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion.StableDiffusionPipeline'> by passing `safety_checker=None`. Ensure that you abide by the conditions of the Stable Diffusion license and do not expose unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly recommend keeping the safety filter enabled in all public-facing circumstances, disabling it only for use cases that involve analyzing network behavior or auditing its results. For more information, please have a look at https://github.com/huggingface/diffusers/pull/254 .
@@ -131,7 +131,7 @@ You can also reuse the same components in multiple pipelines to avoid loading th
 ```python
 from diffusers import StableDiffusionPipeline, StableDiffusionImg2ImgPipeline
 
-model_id = "runwayml/stable-diffusion-v1-5"
+model_id = "Lykon/dreamshaper-8"
 stable_diffusion_txt2img = StableDiffusionPipeline.from_pretrained(model_id, use_safetensors=True)
 
 components = stable_diffusion_txt2img.components
@@ -148,7 +148,7 @@ You can also pass the components individually to the pipeline if you want more f
 ```py
 from diffusers import StableDiffusionPipeline, StableDiffusionImg2ImgPipeline
 
-model_id = "runwayml/stable-diffusion-v1-5"
+model_id = "Lykon/dreamshaper-8"
 stable_diffusion_txt2img = StableDiffusionPipeline.from_pretrained(model_id, use_safetensors=True)
 stable_diffusion_img2img = StableDiffusionImg2ImgPipeline(
     vae=stable_diffusion_txt2img.vae,
@@ -195,11 +195,11 @@ import torch
 
 # load fp16 variant
 stable_diffusion = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", variant="fp16", torch_dtype=torch.float16, use_safetensors=True
+    "Lykon/dreamshaper-8", variant="fp16", torch_dtype=torch.float16, use_safetensors=True
 )
 # load non_ema variant
 stable_diffusion = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", variant="non_ema", use_safetensors=True
+    "Lykon/dreamshaper-8", variant="non_ema", use_safetensors=True
 )
 ```
 
@@ -209,9 +209,9 @@ To save a checkpoint stored in a different floating-point type or as a non-EMA v
 from diffusers import DiffusionPipeline
 
 # save as fp16 variant
-stable_diffusion.save_pretrained("runwayml/stable-diffusion-v1-5", variant="fp16")
+stable_diffusion.save_pretrained("Lykon/dreamshaper-8", variant="fp16")
 # save as non-ema variant
-stable_diffusion.save_pretrained("runwayml/stable-diffusion-v1-5", variant="non_ema")
+stable_diffusion.save_pretrained("Lykon/dreamshaper-8", variant="non_ema")
 ```
 
 If you don't save the variant to an existing folder, you must specify the `variant` argument otherwise it'll throw an `Exception` because it can't find the original checkpoint:
@@ -258,12 +258,12 @@ instead.
 
 Models are loaded from the [`ModelMixin.from_pretrained`] method, which downloads and caches the latest version of the model weights and configurations. If the latest files are available in the local cache, [`~ModelMixin.from_pretrained`] reuses files in the cache instead of re-downloading them.
 
-Models can be loaded from a subfolder with the `subfolder` argument. For example, the model weights for `runwayml/stable-diffusion-v1-5` are stored in the [`unet`](https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main/unet) subfolder:
+Models can be loaded from a subfolder with the `subfolder` argument. For example, the model weights for `Lykon/dreamshaper-8` are stored in the [`unet`](https://huggingface.co/Lykon/dreamshaper-8/tree/main/unet) subfolder:
 
 ```python
 from diffusers import UNet2DConditionModel
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 model = UNet2DConditionModel.from_pretrained(repo_id, subfolder="unet", use_safetensors=True)
 ```
 
@@ -282,7 +282,7 @@ You can also load and save model variants by specifying the `variant` argument i
 from diffusers import UNet2DConditionModel
 
 model = UNet2DConditionModel.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", subfolder="unet", variant="non_ema", use_safetensors=True
+    "Lykon/dreamshaper-8", subfolder="unet", variant="non_ema", use_safetensors=True
 )
 model.save_pretrained("./local-unet", variant="non_ema")
 ```
@@ -306,7 +306,7 @@ from diffusers import (
     DPMSolverMultistepScheduler,
 )
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 
 ddpm = DDPMScheduler.from_pretrained(repo_id, subfolder="scheduler")
 ddim = DDIMScheduler.from_pretrained(repo_id, subfolder="scheduler")
@@ -327,12 +327,12 @@ As a class method, [`DiffusionPipeline.from_pretrained`] is responsible for two 
 - Download the latest version of the folder structure required for inference and cache it. If the latest folder structure is available in the local cache, [`DiffusionPipeline.from_pretrained`] reuses the cache and won't redownload the files.
 - Load the cached weights into the correct pipeline [class](../api/pipelines/overview#diffusers-summary) - retrieved from the `model_index.json` file - and return an instance of it.
 
-The pipelines' underlying folder structure corresponds directly with their class instances. For example, the [`StableDiffusionPipeline`] corresponds to the folder structure in [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5).
+The pipelines' underlying folder structure corresponds directly with their class instances. For example, the [`StableDiffusionPipeline`] corresponds to the folder structure in [`Lykon/dreamshaper-8`](https://huggingface.co/Lykon/dreamshaper-8).
 
 ```python
 from diffusers import DiffusionPipeline
 
-repo_id = "runwayml/stable-diffusion-v1-5"
+repo_id = "Lykon/dreamshaper-8"
 pipeline = DiffusionPipeline.from_pretrained(repo_id, use_safetensors=True)
 print(pipeline)
 ```
@@ -380,7 +380,7 @@ StableDiffusionPipeline {
 }
 ```
 
-Compare the components of the pipeline instance to the [`runwayml/stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main) folder structure, and you'll see there is a separate folder for each of the components in the repository:
+Compare the components of the pipeline instance to the [`Lykon/dreamshaper-8`](https://huggingface.co/Lykon/dreamshaper-8/tree/main) folder structure, and you'll see there is a separate folder for each of the components in the repository:
 
 ```
 .
@@ -443,7 +443,7 @@ CLIPTokenizer(
 )
 ```
 
-Every pipeline expects a [`model_index.json`](https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/model_index.json) file that tells the [`DiffusionPipeline`]:
+Every pipeline expects a [`model_index.json`](https://huggingface.co/Lykon/dreamshaper-8/blob/main/model_index.json) file that tells the [`DiffusionPipeline`]:
 
 - which pipeline class to load from `_class_name`
 - which version of 🧨 Diffusers was used to create the model in `_diffusers_version`

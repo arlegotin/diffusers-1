@@ -183,7 +183,7 @@ import torch
 from diffusers import DDIMScheduler, StableDiffusionPipeline
 import numpy as np
 
-model_id = "runwayml/stable-diffusion-v1-5"
+model_id = "Lykon/dreamshaper-8"
 pipe = StableDiffusionPipeline.from_pretrained(model_id).to("cuda")
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 g = torch.Generator(device="cuda")

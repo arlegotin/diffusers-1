@@ -53,7 +53,7 @@ prompt-to-prompt | change parts of a prompt and retain image structure (see [pap
 
 To load a custom pipeline you just need to pass the `custom_pipeline` argument to `DiffusionPipeline`, as one of the files in `diffusers/examples/community`. Feel free to send a PR with your own pipelines, we will merge them quickly.
 ```py
-pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", custom_pipeline="filename_in_the_community_folder")
+pipe = DiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", custom_pipeline="filename_in_the_community_folder")
 ```
 
 ## Example usages
@@ -152,7 +152,7 @@ clip_model = CLIPModel.from_pretrained("laion/CLIP-ViT-B-32-laion2B-s34B-b79K", 
 
 
 guided_pipeline = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5",
+    "Lykon/dreamshaper-8",
     custom_pipeline="clip_guided_stable_diffusion",
     clip_model=clip_model,
     feature_extractor=feature_extractor,
@@ -252,7 +252,7 @@ def download_image(url):
     response = requests.get(url)
     return PIL.Image.open(BytesIO(response.content)).convert("RGB")
 
-pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", custom_pipeline="stable_diffusion_mega", torch_dtype=torch.float16, revision="fp16")
+pipe = DiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", custom_pipeline="stable_diffusion_mega", torch_dtype=torch.float16, revision="fp16")
 pipe.to("cuda")
 pipe.enable_attention_slicing()
 
@@ -714,7 +714,7 @@ inner_image = PIL.Image.open(inner_image_path).convert("RGBA").resize((512, 512)
 mask_image = PIL.Image.open(mask_path).convert("RGB").resize((512, 512))
 
 pipe = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-inpainting",
+    "Lykon/dreamshaper-8-inpainting",
     custom_pipeline="img2img_inpainting",
     
     torch_dtype=torch.float16
@@ -743,7 +743,7 @@ processor = CLIPSegProcessor.from_pretrained("CIDAS/clipseg-rd64-refined")
 model = CLIPSegForImageSegmentation.from_pretrained("CIDAS/clipseg-rd64-refined")
 
 pipe = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-inpainting",
+    "Lykon/dreamshaper-8-inpainting",
     custom_pipeline="text_inpainting",
     segmentation_model=model,
     segmentation_processor=processor
@@ -1427,7 +1427,7 @@ from diffusers.utils import load_image
 input_image = load_image("https://hf.co/datasets/huggingface/documentation-images/resolve/main/diffusers/input_image_vermeer.png")
 
 pipe = StableDiffusionReferencePipeline.from_pretrained(
-       "runwayml/stable-diffusion-v1-5",
+       "Lykon/dreamshaper-8",
        safety_checker=None,
        torch_dtype=torch.float16
        ).to('cuda:0')
@@ -1483,7 +1483,7 @@ canny_image = Image.fromarray(image)
 
 controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-canny", torch_dtype=torch.float16)
 pipe = StableDiffusionControlNetReferencePipeline.from_pretrained(
-       "runwayml/stable-diffusion-v1-5",
+       "Lykon/dreamshaper-8",
        controlnet=controlnet,
        safety_checker=None,
        torch_dtype=torch.float16
@@ -1535,7 +1535,7 @@ python -m pip install intel_extension_for_pytorch==<version_name> -f https://dev
 
 **Note:** The setting of generated image height/width for `prepare_for_ipex()` should be same as the setting of pipeline inference.
 ```python
-pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", custom_pipeline="stable_diffusion_ipex")
+pipe = DiffusionPipeline.from_pretrained("Lykon/dreamshaper-8", custom_pipeline="stable_diffusion_ipex")
 # For Float32
 pipe.prepare_for_ipex(prompt, dtype=torch.float32, height=512, width=512) #value of image height/width should be consistent with the pipeline inference
 # For BFloat16 
@@ -1560,7 +1560,7 @@ from diffusers import StableDiffusionPipeline
 import time
 
 prompt = "sailing ship in storm by Rembrandt"
-model_id = "runwayml/stable-diffusion-v1-5"
+model_id = "Lykon/dreamshaper-8"
 # Helper function for time evaluation
 def elapsed_time(pipeline, nb_pass=3, num_inference_steps=20):
     # warmup
@@ -2057,7 +2057,7 @@ from diffusers import DiffusionPipeline
 
 # load the pipeline
 # make sure you're logged in with `huggingface-cli login`
-model_id_or_path = "runwayml/stable-diffusion-v1-5"
+model_id_or_path = "Lykon/dreamshaper-8"
 #can also be used with dreamlike-art/dreamlike-photoreal-2.0
 pipe = DiffusionPipeline.from_pretrained(model_id_or_path, torch_dtype=torch.float16, custom_pipeline="pipeline_fabric").to("cuda")
 
@@ -2098,7 +2098,7 @@ image.save("black_to_blue.png")
 
 *With enough feedbacks you can create very similar high quality images.*
 
-The original codebase can be found at [sd-fabric/fabric](https://github.com/sd-fabric/fabric), and available checkpoints are [dreamlike-art/dreamlike-photoreal-2.0](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0), [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5), and [stabilityai/stable-diffusion-2-1](https://huggingface.co/stabilityai/stable-diffusion-2-1) (may give unexpected results).
+The original codebase can be found at [sd-fabric/fabric](https://github.com/sd-fabric/fabric), and available checkpoints are [dreamlike-art/dreamlike-photoreal-2.0](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0), [Lykon/dreamshaper-8](https://huggingface.co/Lykon/dreamshaper-8), and [stabilityai/stable-diffusion-2-1](https://huggingface.co/stabilityai/stable-diffusion-2-1) (may give unexpected results).
 
 Let's have a look at the images (*512X512*)
 

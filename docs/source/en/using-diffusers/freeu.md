@@ -34,7 +34,7 @@ from diffusers import DiffusionPipeline
 import torch
 
 pipeline = DiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, safety_checker=None
+    "Lykon/dreamshaper-8", torch_dtype=torch.float16, safety_checker=None
 ).to("cuda")
 ```
 
